@@ -227,4 +227,7 @@ class Arrays
   def max_on_interval(interval, array)
     array[interval].max
   end
+
+  alias_method :quantity_before_min, :min_index
+  alias_method :quantity_before_max, :max_index
 end

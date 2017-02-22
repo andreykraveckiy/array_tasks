@@ -215,4 +215,12 @@ class TestArrays < MiniTest::Unit::TestCase
   def test_max_on_interval
     assert_equal 6, @arrays.max_on_interval(2..5, [1,2,2,4,5,6,7,8,9])
   end
+
+  def test_quantity_before_min
+    assert_equal 1, @arrays.quantity_before_min([2,1,3,1,5])
+  end
+
+  def test_quantity_before_max
+    assert_equal 4, @arrays.quantity_before_max([2,1,3,1,5,4])
+  end
 end
