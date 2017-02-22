@@ -219,4 +219,12 @@ class Arrays
   def max_negative(array)
     array.map { |a| a if a < 0 }.compact.max
   end
+
+  def min_on_interval(interval, array)
+    array[interval].min
+  end
+
+  def max_on_interval(interval, array)
+    array[interval].max
+  end
 end

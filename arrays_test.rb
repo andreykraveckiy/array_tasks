@@ -207,4 +207,12 @@ class TestArrays < MiniTest::Unit::TestCase
   def test_max_negative
     assert_equal -2, @arrays.max_negative([-4,-3,-2,0,1,0])
   end
+
+  def test_min_on_interval
+    assert_equal 2, @arrays.min_on_interval(2..5, [1,2,2,4,5,6,7,8,9])
+  end
+
+  def test_max_on_interval
+    assert_equal 6, @arrays.max_on_interval(2..5, [1,2,2,4,5,6,7,8,9])
+  end
 end
