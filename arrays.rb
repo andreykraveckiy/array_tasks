@@ -230,4 +230,12 @@ class Arrays
 
   alias_method :quantity_before_min, :min_index
   alias_method :quantity_before_max, :max_index
+
+  def quantity_after_first_min(array)
+    array.length - min_first_index(array) - 1
+  end
+
+  def quantity_after_first_max(array)
+    array.length - max_first_index(array) - 1
+  end
 end

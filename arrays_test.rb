@@ -223,4 +223,12 @@ class TestArrays < MiniTest::Unit::TestCase
   def test_quantity_before_max
     assert_equal 4, @arrays.quantity_before_max([2,1,3,1,5,4])
   end
+
+  def test_quantity_after_first_min
+    assert_equal 6, @arrays.quantity_after_first_min([-1,0,2,3,5,0,-2,5,6,7,8,9,-2])
+  end
+
+  def test_quantity_after_first_max
+    assert_equal 11, @arrays.quantity_after_first_max([-1,10,2,3,5,0,-2,5,6,7,8,9,-2])
+  end
 end
