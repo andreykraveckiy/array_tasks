@@ -238,4 +238,15 @@ class Arrays
   def quantity_after_first_max(array)
     array.length - max_first_index(array) - 1
   end
+
+  alias_method :quantity_before_last_min, :min_last_index
+  alias_method :quantity_before_last_max, :max_last_index
+
+  def quantity_after_last_min(array)
+    array.reverse.index(array.min)
+  end
+
+  def quantity_after_last_max(array)
+    array.reverse.index(array.max)
+  end
 end
