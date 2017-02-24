@@ -217,11 +217,11 @@ class TestArrays < MiniTest::Unit::TestCase
   end
 
   def test_quantity_before_min
-    assert_equal 1, @arrays.quantity_before_min([2,1,3,1,5])
+    assert_equal 1, @arrays.quantity_before_first_min([2,1,3,1,5])
   end
 
   def test_quantity_before_max
-    assert_equal 4, @arrays.quantity_before_max([2,1,3,1,5,4])
+    assert_equal 4, @arrays.quantity_before_first_max([2,1,3,1,5,4])
   end
 
   def test_quantity_after_first_min
@@ -233,7 +233,7 @@ class TestArrays < MiniTest::Unit::TestCase
   end
 
   def test_quantity_before_last_min
-    assert_equal 12, @arrays.quantity_before_last_min([-1,0,2,3,5,0,-2,5,6,7,8,9,-2])
+    assert_equal 7, @arrays.quantity_before_last_min([-1,0,2,3,5,0,-2,-2,5,6,7,8,9])
   end
 
   def test_quantity_before_last_max
@@ -241,10 +241,32 @@ class TestArrays < MiniTest::Unit::TestCase
   end
 
   def test_quantity_after_last_min
-    assert_equal 0, @arrays.quantity_after_last_min([-1,0,2,3,5,0,-2,5,6,7,8,9,-2])
+    assert_equal 5, @arrays.quantity_after_last_min([-1,0,2,3,5,0,-2,-2,5,6,7,8,9])
   end
 
   def test_quantity_after_last_max
     assert_equal 1, @arrays.quantity_after_last_max([-1,10,2,3,5,0,-2,5,6,7,8,10,-2])
+  end
+
+  def test_first_extreme_index
+    assert_equal 1, @arrays.first_extreme_index([-1,10,2,3,5,0,-2,5,6,7,8,10,-2])
+    assert_equal 0, @arrays.first_extreme_index([5,5,5,5,5])
+  end
+
+  def test_last_extreme_index
+    assert_equal 12, @arrays.last_extreme_index([-1,10,2,3,5,0,-2,5,6,7,8,10,-2])
+    assert_equal 4, @arrays.last_extreme_index([5,5,5,5,5])
+  end
+
+  def test_quantity_between_deadline_minimums
+    assert_equal 5, @arrays.quantity_between_deadline_minimums([-1,10,2,3,5,0,-2,5,6,7,8,10,-2])
+    assert_equal 0, @arrays.quantity_between_deadline_minimums([-1,10,2,3,5,0,-2,-2,5,6,7,8,10])
+    assert_equal 0, @arrays.quantity_between_deadline_minimums([-1,10,2,3,5,0,-2,5,6,7])
+  end
+
+  def test_quantity_between_deadline_maximums
+    assert_equal 9, @arrays.quantity_between_deadline_maximums([-1,10,2,3,5,0,-2,5,6,7,8,10,-2])
+    assert_equal 0, @arrays.quantity_between_deadline_maximums([-1,10,10,2,3,5,0,-2,-2,5,6,7,8])
+    assert_equal 0, @arrays.quantity_between_deadline_maximums([-1,10,2,3,5,0,-2,5,6,7])
   end
 end

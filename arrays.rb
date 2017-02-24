@@ -228,8 +228,8 @@ class Arrays
     array[interval].max
   end
 
-  alias_method :quantity_before_min, :min_index
-  alias_method :quantity_before_max, :max_index
+  alias_method :quantity_before_first_min, :min_first_index
+  alias_method :quantity_before_first_max, :max_first_index
 
   def quantity_after_first_min(array)
     array.length - min_first_index(array) - 1
@@ -248,5 +248,23 @@ class Arrays
 
   def quantity_after_last_max(array)
     array.reverse.index(array.max)
+  end
+
+  def first_extreme_index(array)
+    array.index { |i| array.minmax.include? i }
+  end
+
+  def last_extreme_index(array)
+    array.rindex { |i| array.minmax.include? i }
+  end
+
+  def quantity_between_deadline_minimums(array)
+    res =  min_last_index(array) - min_first_index(array)
+    res += min_last_index(array) != min_first_index(array) ? -1 : 0
+  end
+
+  def quantity_between_deadline_maximums(array)
+    res =  max_last_index(array) - max_first_index(array)
+    res += max_last_index(array) != max_first_index(array) ? -1 : 0
   end
 end
