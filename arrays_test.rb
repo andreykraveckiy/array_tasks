@@ -269,4 +269,14 @@ class TestArrays < MiniTest::Unit::TestCase
     assert_equal 0, @arrays.quantity_between_deadline_maximums([-1,10,10,2,3,5,0,-2,-2,5,6,7,8])
     assert_equal 0, @arrays.quantity_between_deadline_maximums([-1,10,2,3,5,0,-2,5,6,7])
   end
+
+  def test_two_mins
+    assert_equal [-2,-1], @arrays.two_mins([-1,10,2,3,5,0,-2,5,6,7])
+    assert_equal [-2,-2], @arrays.two_mins([-1,10,2,3,5,0,-2,5,6,7,8,10,-2])
+  end
+
+  def test_two_maxes
+    assert_equal [10,7], @arrays.two_maxes([-1,10,2,3,5,0,-2,5,6,7])
+    assert_equal [10,10], @arrays.two_maxes([-1,10,2,3,5,0,-2,5,6,7,8,10,-2])
+  end
 end

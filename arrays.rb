@@ -267,4 +267,12 @@ class Arrays
     res =  max_last_index(array) - max_first_index(array)
     res += max_last_index(array) != max_first_index(array) ? -1 : 0
   end
+
+  def two_mins(array)
+    array.min(2)
+  end
+
+  def two_maxes(array)
+    array.max(2)
+  end
 end
