@@ -275,4 +275,25 @@ class Arrays
   def two_maxes(array)
     array.max(2)
   end
+
+  def longest_sequence_of(array, compare = :min)
+    array.chunk { |n| n == array.send(compare) }
+                .map {|i| i if i.first }
+                .compact
+                .max {|i| i.last.length}
+                .last.length
+  end
+
+  def even_odd(array)
+    array.partition(&:even?)
+  end
+
+  def odd_even(array)
+    array.partition(&:odd?)
+  end
+
+  def interleaved_parity(array)
+    array.each_cons(2) { |a,b| return unless a.odd? && b.even? || a.even? && b.odd? }
+    true
+  end
 end

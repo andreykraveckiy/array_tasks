@@ -279,4 +279,25 @@ class TestArrays < MiniTest::Unit::TestCase
     assert_equal [10,7], @arrays.two_maxes([-1,10,2,3,5,0,-2,5,6,7])
     assert_equal [10,10], @arrays.two_maxes([-1,10,2,3,5,0,-2,5,6,7,8,10,-2])
   end
+
+  def test_longest_sequence_of_min
+    assert_equal 3, @arrays.longest_sequence_of([-1,-1,0,-1,2,-1,-1,-1], :min)
+  end
+
+  def test_longest_sequence_of_max
+    assert_equal 3, @arrays.longest_sequence_of([-1,2,0,-1,2,2,2,-1], :max)
+  end
+
+  def test_even_odd
+    assert_equal [[2,4],[1,3,5]], @arrays.even_odd([1,2,3,4,5])
+  end
+
+  def test_odd_even
+    assert_equal [[1,3,5],[2,4]], @arrays.odd_even([1,2,3,4,5])
+  end
+
+  def test_interleaved_parity
+    assert @arrays.interleaved_parity([1,2,3,4,5])
+    assert !@arrays.interleaved_parity([1,1,2,3,4,5])
+  end
 end
