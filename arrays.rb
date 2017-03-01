@@ -292,8 +292,21 @@ class Arrays
     array.partition(&:odd?)
   end
 
-  def interleaved_parity(array)
+  def interleaved_parity?(array)
     array.each_cons(2) { |a,b| return unless a.odd? && b.even? || a.even? && b.odd? }
     true
+  end
+
+  def positive_negative?(array)
+    array.each_cons(2) { |a,b| return unless a > 0 && b < 0 || a < 0 && b > 0 }
+    true
+  end
+
+  def nearest_sum_for_real(number, array)
+    array.repeated_combination(2).to_a[1..-2].min {|x,y| (x.first + x.last - number).abs <=> (y.first + y.last - number).abs }
+  end
+
+  def farest_sum_for_real(number, array)
+    array.repeated_combination(2).to_a[1..-2].max {|x,y| (x.first + x.last - number).abs <=> (y.first + y.last - number).abs }
   end
 end

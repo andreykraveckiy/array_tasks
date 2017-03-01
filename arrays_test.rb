@@ -297,7 +297,21 @@ class TestArrays < MiniTest::Unit::TestCase
   end
 
   def test_interleaved_parity
-    assert @arrays.interleaved_parity([1,2,3,4,5])
-    assert !@arrays.interleaved_parity([1,1,2,3,4,5])
+    assert @arrays.interleaved_parity?([1,2,3,4,5])
+    assert !@arrays.interleaved_parity?([1,1,2,3,4,5])
+  end
+
+  def test_positive_negative
+    assert @arrays.positive_negative?([-1,2,-3,4,-5])
+    assert !@arrays.positive_negative?([1,-1,-2,3,-4])
+    assert !@arrays.positive_negative?([1,-1,0,3,-4])
+  end
+
+  def test_nearest_sum_for_real
+    assert_equal [1.00000025, 1.00000035], @arrays.nearest_sum_for_real(2.0000006, [1.0000004, 1.00000025, 1.00000035])
+  end
+
+  def test_farest_sum_for_real
+    assert_equal [1.0000004, 1.00000035], @arrays.farest_sum_for_real(2.0000006, [1.0000004, 1.00000025, 1.00000035])
   end
 end
